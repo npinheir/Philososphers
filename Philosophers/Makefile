@@ -6,7 +6,7 @@
 #    By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 09:56:47 by npinheir          #+#    #+#              #
-#    Updated: 2021/11/19 10:20:52 by npinheir         ###   ########.fr        #
+#    Updated: 2021/11/22 08:28:54 by npinheir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ obj:
 
 # This won't run if the object files don't exist or are not modified.
 $(NAME): $(OBJ)
-		@$(CC) $(OBJ) -o $(NAME)
+		@$(CC) -pthread $(OBJ) -o $(NAME)
 		@echo "\t$(GREEN)✔ Philo created !$(NONE)"
 
 # This won't run if the source files don't exist or are not modified.
