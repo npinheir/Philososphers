@@ -6,7 +6,7 @@
 /*   By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 11:16:09 by npinheir          #+#    #+#             */
-/*   Updated: 2021/11/23 12:40:41 by npinheir         ###   ########.fr       */
+/*   Updated: 2021/11/25 07:49:12 by npinheir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ void	ft_print_status(char *str, t_philo *phils)
 	time = 0;
 	time = ft_actual_time() - phils->ru->start_time;
 		printf("%d ", time);
-		printf("Philo %dd %s", phils->id, str);
+		printf("Philo %d %s", phils->id, str);
 }

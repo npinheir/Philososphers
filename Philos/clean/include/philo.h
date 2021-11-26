@@ -6,7 +6,7 @@
 /*   By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 12:52:32 by npinheir          #+#    #+#             */
-/*   Updated: 2021/11/23 13:13:47 by npinheir         ###   ########.fr       */
+/*   Updated: 2021/11/25 08:55:55 by npinheir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,26 @@
 # define MAX_INT 2147483647
 # define MIN_INT -2147483648
 
+// Threads
+int				ft_init_threads(t_env *env);
+
+// Activity
+void			ft_eat(t_philo *phils);
+void			ft_sleep_think(t_philo *phils);
+int				ft_loop_end(t_philo *phils);
+int				ft_death(t_philo *phils);
+
+// Philo utils
+unsigned int	ft_actual_time(void);
+void			ft_print_status(char *str, t_philo *phils);
+void			ft_usleep(unsigned int time_in_ms);
+
 // Errors
-int		ft_error_check(int argc, char **argv, t_env *env);
+int				ft_error_check(int argc, char **argv, t_env *env);
 
 // Utils
-int		ft_atoi(const char *str);
+int				ft_atoi(const char *str);
 
-long	ft_atol(const char *str);
+long			ft_atol(const char *str);
 
 #endif
