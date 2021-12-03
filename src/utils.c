@@ -5,49 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 10:43:19 by npinheir          #+#    #+#             */
-/*   Updated: 2021/11/19 11:34:39 by npinheir         ###   ########.fr       */
+/*   Created: 2021/11/23 13:08:34 by npinheir          #+#    #+#             */
+/*   Updated: 2021/11/26 11:57:51 by npinheir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-static long	skipuselesschar(const char *str)
-{
-	long	i;
-
-	i = 0;
-	while (str[i] == '\t'
-	|| str[i] == '\n'
-	|| str[i] == '\v'
-	|| str[i] == '\r'
-	|| str[i] == '\f'
-	|| str[i] == ' ')
-		++i;
-	return (i);
-}
-
-long		ft_atol(const char *str)
-{
-	long		result;
-	long		isneg;
-	long		i;
-
-	result = 0;
-	i = skipuselesschar(str);
-	isneg = 0;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		isneg = (str[i] == '-' ? 1 : 0);
-		++i;
-	}
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		result = result * 10 + str[i] - 48;
-		++i;
-	}
-	return (isneg == 1 ? result *= -1 : result);
-}
 
 static size_t	ft_atoi2(const char *str, int *sign)
 {
@@ -86,13 +49,51 @@ int	ft_atoi(const char *str)
 	return ((int)res * sign);
 }
 
-void	ft_bzero(void *s, size_t n)
+static long	ft_isdigit(long c)
 {
-	size_t	i;
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}
 
-	if (!s || !n)
-		return ;
+static long	skipuselesschar(const char *str)
+{
+	long	i;
+
 	i = 0;
-	while (i < n)
-		((char *)s)[i++] = 0;
+	while (str[i] == '\t'
+		|| str[i] == '\n'
+		|| str[i] == '\v'
+		|| str[i] == '\r'
+		|| str[i] == '\f'
+		|| str[i] == ' ')
+		++i;
+	return (i);
+}
+
+long	ft_atol(const char *str)
+{
+	long		result;
+	long		isneg;
+	long		i;
+
+	result = 0;
+	i = skipuselesschar(str);
+	isneg = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			isneg = 1;
+		else
+			isneg = 0;
+		++i;
+	}
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		result = result * 10 + str[i] - 48;
+		++i;
+	}
+	if (isneg == 1)
+		return (result *= -1);
+	return (result);
 }

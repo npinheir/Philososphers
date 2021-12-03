@@ -6,11 +6,23 @@
 /*   By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 07:45:47 by npinheir          #+#    #+#             */
-/*   Updated: 2021/11/25 07:53:58 by npinheir         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:29:53 by npinheir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_loop(t_philo *phils)
+{
+	pthread_mutex_lock(&phils->ru->stop_mut);
+	if (!phils->ru->stop && (phils->ru->cycle == -1 || phils->nb_eat < phils->ru->cycle))
+	{
+		pthread_mutex_unlock(&phils->ru->stop_mut);
+		return (1);
+	}
+	pthread_mutex_unlock(&phils->ru->stop_mut);
+	return (0);
+}
 
 void	ft_usleep(unsigned int time_in_ms)
 {
@@ -28,8 +40,11 @@ void	ft_print_status(char *str, t_philo *phils)
 
 	time = 0;
 	time = ft_actual_time() - phils->ru->start_time;
-	printf("%d ", time);
-	printf("Philo %d %s", phils->id, str);
+	if (time <= 2147483647 && !ft_death(phils, 0))
+	{
+		printf("%d ", time);
+		printf("Philo %d %s", phils->id, str);
+	}
 }
 
 unsigned int	ft_actual_time(void)
