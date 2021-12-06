@@ -6,7 +6,7 @@
 /*   By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 07:33:24 by npinheir          #+#    #+#             */
-/*   Updated: 2021/12/02 12:29:14 by npinheir         ###   ########.fr       */
+/*   Updated: 2021/12/06 06:53:04 by npinheir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static void	*ft_is_dead(void *arg)
 	ft_usleep(phils->ru->t_die + 1);
 	pthread_mutex_lock(&phils->ru->time_check);
 	pthread_mutex_lock(&phils->ru->finish);
-	if (!ft_death(phils, 0) && !phils->finish && (ft_actual_time() - phils->last_eat >= phils->ru->t_die))
+	if (!ft_death(phils, 0) && !phils->finish
+		&& (ft_actual_time() - phils->last_eat >= phils->ru->t_die))
 	{
 		pthread_mutex_unlock(&phils->ru->time_check);
 		pthread_mutex_unlock(&phils->ru->finish);

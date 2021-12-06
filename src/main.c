@@ -6,7 +6,7 @@
 /*   By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 12:51:58 by npinheir          #+#    #+#             */
-/*   Updated: 2021/12/03 05:10:47 by npinheir         ###   ########.fr       */
+/*   Updated: 2021/12/06 06:53:11 by npinheir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,3 @@ int	main(int argc, char **argv)
 	}
 	ft_stop(&env);
 }
-

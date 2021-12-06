@@ -6,7 +6,7 @@
 /*   By: npinheir <npinheir@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 07:45:47 by npinheir          #+#    #+#             */
-/*   Updated: 2021/12/02 12:29:53 by npinheir         ###   ########.fr       */
+/*   Updated: 2021/12/06 06:53:22 by npinheir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	ft_loop(t_philo *phils)
 {
 	pthread_mutex_lock(&phils->ru->stop_mut);
-	if (!phils->ru->stop && (phils->ru->cycle == -1 || phils->nb_eat < phils->ru->cycle))
+	if (!phils->ru->stop && (phils->ru->cycle == -1
+		|| phils->nb_eat < phils->ru->cycle))
 	{
 		pthread_mutex_unlock(&phils->ru->stop_mut);
 		return (1);
